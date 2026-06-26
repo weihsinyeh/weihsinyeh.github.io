@@ -134,3 +134,81 @@ h2 {
     margin-top: 35px;                 /* 與上方區塊的間距 */
     margin-bottom: 20px;              /* 與下方圖片文字的間距 */
 }
+
+/* My hobby */
+.works-grid {
+    column-count: 3;    /* 設定要顯示幾欄 */
+    column-gap: 20px;   /* 欄與欄之間的間距 */
+}
+
+.work-card {
+    break-inside: avoid;
+    margin-bottom: 50px;
+    border: 2px solid #ccc;     /* 邊框 */
+    border-radius: 20px;        /* 卡片外框的圓角 */
+    background-color: #ffe986fd;
+    
+    /* 👇 關鍵在這裡！讓裡面的內容離卡片邊緣「往內縮 16px」 */
+    padding: 16px; 
+}
+
+/* 確保圖片不會超出卡片寬度 */
+.work-card img, .image-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 螢幕變窄時減少欄數 (RWD) */
+@media (max-width: 900px) {
+    .works-grid {
+        column-count: 2;
+    }
+}
+@media (max-width: 600px) {
+    .works-grid {
+        column-count: 1;
+    }
+}
+
+/* 圖片處理：圓角 */
+.work-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* 圖片圓角 */
+    display: block;
+}
+
+/* 文字與日期排版 */
+.work-info {
+    margin-top: 12px;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: #ff9d00;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap; /* 關鍵：如果放不下，自動換到下一行 */
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.image-gallery img {
+    flex: 1 1 calc(33.33% - 10px); /* 關鍵：設定每張圖佔約 1/3 的寬度 */
+    height: 150px; 
+    object-fit: cover;
+    border-radius: 6px;
+    box-sizing: border-box; /* 確保 padding/border 不會影響寬度計算 */
+}
